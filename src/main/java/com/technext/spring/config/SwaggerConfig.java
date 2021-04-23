@@ -37,6 +37,8 @@ public class SwaggerConfig {
                 contact(new Contact("Spring Boot Support Team",
                         "index.html",
                         "SpringBootSupportTeam@test")).
-                license("Licence of Api").build();
+                license("MIT Licence").
+                licenseUrl("https://opensource.org/licenses/MIT").
+                build();
     }
 }
