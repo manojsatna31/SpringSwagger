@@ -73,4 +73,4 @@ And most of the user tries to find HTML swagger document file using ```{host}/sw
 
 **use** ```{host}/swagger-ui/``` to see the HTML document
 
-This is a sample project link on GitHub Refer to [documentation] ( https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/ ) io.springfox
+This is a sample project link on GitHub Refer to [documentation](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/ "documentation") io.springfox
