@@ -74,3 +74,41 @@ And most of the user tries to find HTML swagger document file using ```{host}/sw
 **use** ```{host}/swagger-ui/``` to see the HTML document
 
 This is a sample project link on GitHub Refer to [documentation](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/) io.springfox
+
+# Secure your Swagger 3.0.0
+#### Add Maven Dependency:-
+```
+<!-- Spring Security-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+#### Create a configuration class :-
+```
+@EnableWebSecurity
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/swagger-ui/**", "/api/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic();
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("test")
+                .password(passwordEncoder().encode("test"))
+                .authorities("ADMIN");
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+```
+Once you open ```{host}/swagger-ui/```  browser prompt you to enter **Username** &  **Password** & without proper credentials you can't login
